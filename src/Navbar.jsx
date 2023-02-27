@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import MenuLink from "./MenuLink";
-
-
+import Map from "./Leaflet";
 
 const Navbar = () => {
   const { dispatch } = useContext( AuthContext );
@@ -16,39 +15,53 @@ const Navbar = () => {
   };
 
   const { currentUser } = useContext( AuthContext );
-  // console.log(currentUser);
+
   return (
-    <div className="navbar">
-      <div className="navbarWrapper">
-        <div className="navbarLeft">
-          <span className="logo">DesignMediaX</span>
-        </div>
-        <div className="navbarCenter">
-          <div className="search">
-            <input
-              type="text"
-              placeholder="search for something..."
-              className="searchInput"
-            />
+    <>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-5">
+          <div class="container">
+            <a class="navbar-brand logo" href="#">
+              UBER
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div className="d-flex justify-content-end">
+              <div className="col-1">
+                <img
+                  className="img-fluid"
+                  src={
+                    currentUser.photoURL
+                      ? currentUser.photoURL
+                      : "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                  }
+                  alt=""
+                />
+              </div>
+              <span onClick={ handleLogout }>
+                <MenuLink text="Logout" />
+              </span>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-12">
+            <Map/>
           </div>
         </div>
-        <div className="navbarRight">
-          <img
-            className="profileImg"
-            src={
-              currentUser.photoURL
-                ? currentUser.photoURL
-                : "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-            }
-            alt=""
-          />
-          <span className="navbarName">{ currentUser.displayName }</span>
-          <span onClick={ handleLogout }>
-            <MenuLink text="Logout" />
-          </span>
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,12 +1,25 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "ShantellSans";
+    font-family: "OswaldRegular";
+}
+@import url("../node_modules//leaflet/dist/leaflet.css");
+
+.leaflet-container {
+    width: 100%;
+    height: 100vh;
 }
 
 @font-face {
-    font-family: "ShantellSans";
-    src: url(assets/fonts/ShantellSans-Regular.ttf);
+    font-family: "OswaldBold";
+    src: url(assets/fonts/OswaldBold.ttf);
+}
+@font-face {
+    font-family: "OswaldRegular";
+    src: url(assets/fonts/OswaldRegular.ttf);
+}
+.logo{
+        font-family: "OswaldBold";
 }
 
 .disply-row {
