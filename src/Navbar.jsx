@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import MenuLink from "./MenuLink";
-import Map from "./Leaflet";
 
 const Navbar = () => {
   const { dispatch } = useContext( AuthContext );
@@ -54,13 +53,6 @@ const Navbar = () => {
           </div>
         </nav>
       </header>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <Map/>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
