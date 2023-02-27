@@ -9,7 +9,8 @@ import Home from "./Main-home.jsx";
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";
 import Display from "./Home";
-// import Map from "./Leaflet";
+import Map from "./Map";
+
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -19,10 +20,10 @@ function App() {
   };
 
   const router = createBrowserRouter([
-    // {
-    //   path: "/map",
-    //   element: <Map />,
-    // },
+    {
+      path: "/map",
+      element: <Map />,
+    },
     {
       path: "/main",
       element: <Display />,
