@@ -4,10 +4,10 @@ import "./App.css";
 import RoutingMachine from "./Maprouting";
 
 function Map () {
-    const position = [ 36.8065, 10.1815 ];
+    const position = [ 28.4212, 70.2989 ];
     return (
         <div className="App">
-            <MapContainer center={ position } zoom={ 13 } scrollWheelZoom={ false }>
+            <MapContainer center={ position } zoom={ 14 } scrollWheelZoom={ false }>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

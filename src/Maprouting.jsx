@@ -8,14 +8,14 @@ const RoutingMachine = () => {
     const map = useMap();
     useEffect( () => {
 
-        var marker1 = L.marker( [ 36.8065, 10.1815 ], ).addTo(
+        var marker1 = L.marker( [ 28.4212, 70.2989 ], ).addTo(
             map
         );
         map.on( "click", function ( e ) {
             L.marker( [ e.latlng.lat, e.latlng.lng ] ).addTo( map );
             L.Routing.control( {
                 waypoints: [
-                    L.latLng( 36.8065, 10.1815 ),
+                    L.latLng( 28.4212, 70.2989 ),
                     L.latLng( e.latlng.lat, e.latlng.lng ),
                 ],
                 lineOptions: {

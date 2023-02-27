@@ -18,9 +18,9 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-5">
+        <nav class="navbar navbar-expand-lg navbar-light py-5 border-0">
           <div class="container">
-            <a class="navbar-brand logo" href="#">
+            <a class="navbar-brand logo text-white" href="#">
               UBER
             </a>
             <button
@@ -34,14 +34,12 @@ const Navbar = () => {
             >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div className="d-flex justify-content-end">
-              <div className="col-1">
+            <div className="d-flex justify-content-end align-items-center">
+              <div className="col-2">
                 <img
                   className="img-fluid"
                   src={
-                    currentUser.photoURL
-                      ? currentUser.photoURL
-                      : "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                    currentUser.photoURL || "https://nregsmp.org/eService/images/User.png"
                   }
                   alt=""
                 />
