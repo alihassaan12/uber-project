@@ -408,9 +408,6 @@
     text-transform: capitalize;
 }
 
-.menulink:hover {
-    background-color: #f0eeee;
-}
 
 @media only screen and (max-width: 940px) {
     .menuLinkText {

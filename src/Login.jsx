@@ -15,7 +15,7 @@ const Login = () => {
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
 
-  const { dispatch } = useContext(AuthContext);
+  const { dispatchh } = useContext(AuthContext);
 
   const handleToggle = (e) => {
     setToggleEye(!toggleEye);
@@ -27,35 +27,35 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
+    dispatchh({ type: "LOGIN_START" });
     try {
       signInWithEmailAndPassword(auth, inputs.email, inputs.password).then(
         (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          dispatch({ type: "LOGIN_SUCCESS", payload: user });
+          dispatchh({ type: "LOGIN_SUCCESS", payload: user });
           console.log(user);
           navigate("/");
         }
       );
     } catch (error) {
-      dispatch({ type: "LOGIN_FAILURE" });
+      dispatchh({ type: "LOGIN_FAILURE" });
     }
   };
 
   const signInWithGoogle = () => {
-    dispatch({ type: "LOGIN_START" });
+    dispatchh({ type: "LOGIN_START" });
 
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
         // The signed-in user info.
         const user = result.user;
-        dispatch({ type: "LOGIN_SUCCESS", payload: user });
+        dispatchh({ type: "LOGIN_SUCCESS", payload: user });
         navigate("/");
       })
       .catch((error) => {
-        dispatch({ type: "LOGIN_FAILURE" });
+        dispatchh({ type: "LOGIN_FAILURE" });
       });
   };
   console.log(inputs);

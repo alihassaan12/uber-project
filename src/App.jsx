@@ -10,6 +10,8 @@ import Login from "./Login.jsx";
 import Register from "./Register.jsx";
 import Display from "./Home";
 import Map from "./Map";
+import Product from "./ProductCard"
+import CartPage from "./cartPage";
 
 
 function App() {
@@ -20,6 +22,14 @@ function App() {
   };
 
   const router = createBrowserRouter([
+    {
+      path: "/cart-page",
+      element: <CartPage/>
+    },
+    {
+      path: "/product",
+      element: <Product />,
+    },
     {
       path: "/map",
       element: <Map />,

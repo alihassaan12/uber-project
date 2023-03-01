@@ -13,7 +13,7 @@ import FormInput from "./FormInput.jsx";
 import { AuthContext } from "./context/AuthContext";
 
 const Register = () => {
-  const { dispatch } = useContext(AuthContext);
+  const { dispatchh } = useContext(AuthContext);
   const [inputValues, setInputValues] = useState({
     username: "",
     email: "",
@@ -85,18 +85,18 @@ const Register = () => {
   };
 
   const signInWithGoogle = () => {
-    dispatch({ type: "LOGIN_START" });
+    dispatchh({ type: "LOGIN_START" });
 
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
         // The signed-in user info.
         const user = result.user;
-        dispatch({ type: "LOGIN_SUCCESS", payload: user });
+        dispatchh({ type: "LOGIN_SUCCESS", payload: user });
         navigate("/");
       })
       .catch((error) => {
-        dispatch({ type: "LOGIN_FAILURE" });
+        dispatchh({ type: "LOGIN_FAILURE" });
       });
   };
   // console.log(inputValues);
