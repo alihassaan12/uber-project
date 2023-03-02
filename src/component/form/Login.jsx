@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
-import "./App.css";
+import "../../css/App.css";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, provider } from "./firebase.jsx";
+import { auth, provider } from "../firebase/Firebase.jsx";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { AuthContext } from "./context/AuthContext";
-import { FacebookRounded, Visibility,VisibilityOff } from "@mui/icons-material";
+import { AuthContext } from "../../context/AuthContext";
+import {
+  FacebookRounded,
+  Visibility,
+  VisibilityOff,
+} from "@mui/icons-material";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -21,7 +25,7 @@ const Login = () => {
     setToggleEye(!toggleEye);
     setInputType(inputType === "password" ? "text" : "password");
   };
-  const handleChange = (e) => { 
+  const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -31,7 +35,6 @@ const Login = () => {
     try {
       signInWithEmailAndPassword(auth, inputs.email, inputs.password).then(
         (userCredential) => {
-          // Signed in
           const user = userCredential.user;
           dispatchh({ type: "LOGIN_SUCCESS", payload: user });
           console.log(user);
@@ -49,7 +52,6 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        // The signed-in user info.
         const user = result.user;
         dispatchh({ type: "LOGIN_SUCCESS", payload: user });
         navigate("/");
@@ -84,7 +86,7 @@ const Login = () => {
           />
           <div className="eyeIcon" onClick={handleToggle}>
             {toggleEye ? <Visibility /> : <VisibilityOff />}
-          </div> 
+          </div>
         </div>
         <button type="submit" onClick={handleLogin}>
           Login
@@ -116,7 +118,11 @@ const Login = () => {
             style={{ textDecoration: "none" }}
             onClick={signInWithGoogle}
           >
-            <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" className="googleImg" />
+            <img
+              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+              alt=""
+              className="googleImg"
+            />
             <span>Login with Google</span>
           </Link>
         </div>

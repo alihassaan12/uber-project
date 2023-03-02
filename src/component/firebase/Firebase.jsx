@@ -9,9 +9,8 @@ const firebaseConfig = {
   storageBucket: "uber-app-6ad01.appspot.com",
   messagingSenderId: "862665642171",
   appId: "1:862665642171:web:d24f0fdc0a86b3a5fe199e",
-  measurementId: "G-D30TGFK84T"
+  measurementId: "G-D30TGFK84T",
 };
-
 
 const app = initializeApp(firebaseConfig);
 
@@ -21,4 +20,3 @@ export const storage = getStorage();
 
 export const provider = new GoogleAuthProvider();
 export default app;
-

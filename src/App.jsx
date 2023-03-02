@@ -6,13 +6,13 @@ import {
 } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import Home from "./Main-home.jsx";
-import Login from "./Login.jsx";
-import Register from "./Register.jsx";
+import Login from "./component/form/Login.jsx";
+import Register from "./component/form/Register.jsx";
 import Display from "./Home";
-import Map from "./Map";
-import Product from "./ProductCard"
-import CartPage from "./cartPage";
-
+import Map from "./component/map/Map.jsx";
+import Product from "./component/product/ProductCard";
+import CartPage from "./component/cart/cartPage";
+import Ridedone from "./Ridedone";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -23,8 +23,12 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      path: "/done",
+      element: <Ridedone />,
+    },
+    {
       path: "/cart-page",
-      element: <CartPage/>
+      element: <CartPage />,
     },
     {
       path: "/product",

@@ -1,33 +1,34 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-import {
-  getCartTotal,
-  removeItem,
-} from "./cartSlice";
+import { getCartTotal, removeItem } from "./cartSlice";
 
 const CartPage = () => {
   const { cart, totalQuantity, totalPrice } = useSelector(
-    ( state ) => state.allCart
+    (state) => state.allCart
   );
 
   const dispatch = useDispatch();
 
-  useEffect( () => {
-    dispatch( getCartTotal() );
-  }, [ cart ] );
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
   return (
     <>
-      <section className="container-fluid py-5">
+      <section
+        className="container-fluid py-5 purple-bg"
+        style={{ height: "100vh" }}
+      >
         <div className="row justify-content-center my-4">
           <div className="col-4">
-            <div className="card mb-4">
-              <div className="card-header py-3">
-                <h5 className="mb-0">Cart - { cart.length } items</h5>
+            <div className="card mb-4 border-0 rounded-0">
+              <div className="card-header py-3 blue-bg text-white border-0 rounded-0">
+                <h5 className="mb-0">Cart - {cart.length} items</h5>
               </div>
-              <div className="card-body">
-                { cart?.map( ( data ) => (
+              <div className="card-body  border-0 rounded-0">
+                {cart?.map((data) => (
                   <div className="row">
                     <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
                       <div
@@ -35,72 +36,51 @@ const CartPage = () => {
                         data-mdb-ripple-color="light"
                       >
                         <img
-                          src={ data.img }
+                          src={data.img}
                           className="w-100"
                           alt="Blue Jeans Jacket"
                         />
                       </div>
                     </div>
-
                     <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                       <p>
-                        <strong>{ data.title }</strong>
+                        <strong>{data.title}</strong>
                       </p>
-
                       <button
                         type="button"
-                        className="btn btn-primary btn-sm me-1 mb-2"
+                        className="btn blue-bg text-white btn-sm me-1 mb-2"
                         data-mdb-toggle="tooltip"
                         title="Remove item"
-                        onClick={ () => dispatch( removeItem( data.id ) ) }
+                        onClick={() => dispatch(removeItem(data.id))}
                       >
                         <i className="fas fa-trash"></i>
                       </button>
                     </div>
-
                     <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                       <div
                         className="d-flex mb-4"
-                        style={ { maxWidth: "300px" } }
-                      >
-
-                        <div className="form-outline">
-                          <input
-                            id="form1"
-                            min="0"
-                            name="quantity"
-                            value={ data.quantity }
-                            type="number"
-                            className="form-control"
-                            onChange={ () => null }
-                          />
-                          <label className="form-label" for="form1">
-                            Quantity
-                          </label>
-                        </div>
-
-                      </div>
-
+                        style={{ maxWidth: "300px" }}
+                      ></div>
                       <p className="text-start text-md-center">
-                        <strong>{ data.price }</strong>
+                        <strong>{data.price}</strong>
                       </p>
                     </div>
                     <hr className="my-4" />
                   </div>
-                ) ) }
+                ))}
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <div className="card mb-4">
-              <div className="card-header py-3">
+            <div className="card mb-4 border-0 rounded-0">
+              <div className="card-header py-3 blue-bg text-white border-0 rounded-0">
                 <h5 className="mb-0">Summary</h5>
               </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                     Total Quantity
-                    <span>{ totalQuantity }</span>
+                    <span>{totalQuantity}</span>
                   </li>
 
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -108,17 +88,17 @@ const CartPage = () => {
                       <strong>Total amount</strong>
                     </div>
                     <span>
-                      <strong>{ totalPrice }</strong>
+                      <strong>{totalPrice}</strong>
                     </span>
                   </li>
                 </ul>
-
-                <button
+                <Link
+                  to="/done"
                   type="button"
-                  className="btn btn-primary btn-lg btn-block"
+                  className="btn  blue-bg text-white rounded-0 btn-lg btn-block"
                 >
                   Go to checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>

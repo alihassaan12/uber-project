@@ -1,32 +1,28 @@
-import "./App.css";
-import { useContext,useEffect } from "react";
-import { AuthContext } from "./context/AuthContext";
+import "../../css/App.css";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import MenuLink from "./MenuLink";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartTotal } from "./cartSlice"
-
+import { getCartTotal } from "../cart/cartSlice";
 
 const Navbar = () => {
-  const { cart, totalQuantity } = useSelector( ( state ) => state.allCart );
+  const { cart, totalQuantity } = useSelector((state) => state.allCart);
 
   const dispatch = useDispatch();
-  useEffect( () => {
-    dispatch( getCartTotal() );
-  }, [ cart ] );
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
-
-  const { dispatchh } = useContext( AuthContext );
+  const { dispatchh } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogout = ( e ) => {
-    dispatchh( { type: "LOGOUT" } );
-    navigate( "/login" );
+  const handleLogout = (e) => {
+    dispatchh({ type: "LOGOUT" });
+    navigate("/login");
   };
 
-  
-
-  const { currentUser } = useContext( AuthContext );
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
@@ -52,17 +48,25 @@ const Navbar = () => {
                 <img
                   className="img-fluid"
                   src={
-                    currentUser.photoURL || "https://nregsmp.org/eService/images/User.png"
+                    currentUser.photoURL ||
+                    "https://nregsmp.org/eService/images/User.png"
                   }
                   alt=""
                 />
               </div>
-              <span onClick={ handleLogout }>
+              <span onClick={handleLogout}>
                 <MenuLink text="Logout" />
               </span>
-            </div>
-            <div className="border px-2 py-1">
-              <Link className="d-flex align-items-center" to="/cart-page"><i class="fa-brands fa-shopify mx-2 fa-2x"></i><div>{ totalQuantity }</div></Link>
+              <div>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="d-flex align-items-center"
+                  to="/cart-page"
+                >
+                  <i class="fa-brands fa-shopify mx-2 fa-2x text-white"></i>
+                  <div className="text-white fw-bold">{totalQuantity}</div>
+                </Link>
+              </div>
             </div>
           </div>
         </nav>

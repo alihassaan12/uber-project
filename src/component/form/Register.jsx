@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./App.css";
-import { auth, provider } from "./firebase.jsx";
+import "../../css/App.css";
+import { auth, provider } from "../firebase/Firebase.jsx";
 import {
   updateProfile,
   createUserWithEmailAndPassword,
@@ -10,7 +10,7 @@ import {
 import { FacebookRounded } from "@mui/icons-material";
 
 import FormInput from "./FormInput.jsx";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
   const { dispatchh } = useContext(AuthContext);
@@ -74,7 +74,6 @@ const Register = () => {
         inputValues.email,
         inputValues.password
       ).then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         updateProfile(user, {
           displayName: inputValues.username,
@@ -90,7 +89,6 @@ const Register = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        // The signed-in user info.
         const user = result.user;
         dispatchh({ type: "LOGIN_SUCCESS", payload: user });
         navigate("/");
@@ -99,7 +97,6 @@ const Register = () => {
         dispatchh({ type: "LOGIN_FAILURE" });
       });
   };
-  // console.log(inputValues);
   return (
     <div className="register">
       <form>
@@ -142,7 +139,11 @@ const Register = () => {
             style={{ textDecoration: "none" }}
             onClick={signInWithGoogle}
           >
-            <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" className="googleImg" />
+            <img
+              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+              alt=""
+              className="googleImg"
+            />
             <span>Login with Google</span>
           </Link>
         </div>

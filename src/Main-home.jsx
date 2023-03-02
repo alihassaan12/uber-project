@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
-import Map from "./Map.jsx";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import Navbar from "./component/navbar/Navbar.jsx";
+import Map from "./component/map/Map.jsx";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -17,14 +17,19 @@ const Home = () => {
               <h1 className="text-white">Select Your Location</h1>
               <Map />
               <div className="py-4">
-                <Link to="./product" className="px-5 py-3 blue-bg text-white rounded-4">NEXT</Link>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="./product"
+                  className="px-5 py-3 blue-bg text-white rounded-4"
+                >
+                  NEXT
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
-
   );
 };
 
