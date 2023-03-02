@@ -55,7 +55,7 @@ const Navbar = () => {
                 />
               </div>
               <span onClick={handleLogout}>
-                <MenuLink text="Logout" />
+                <MenuLink className="color-white" text="Logout" />
               </span>
               <div>
                 <Link

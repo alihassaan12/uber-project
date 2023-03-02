@@ -9,10 +9,6 @@
   width: 100%;
   height: 100vh;
 }
-.navbar {
-  background-color: #04091dc7;
-  color: white;
-}
 
 @font-face {
   font-family: "OswaldBold";
@@ -30,29 +26,12 @@
   height: 100vh;
 }
 
-.blue-bg {
-  background-color: #04091d !important;
-}
-
-.purple-bg {
-  background-color: #504bc3 !important;
-}
-
-.purple-color {
-  color: #504bc3;
-}
-
-.blue-color {
-  color: #04091d;
-}
-
 .register {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: #504bc3;
 }
 
 .register form {
@@ -61,6 +40,11 @@
   padding: 20px;
   width: 100%;
   border-radius: 5px;
+}
+.fa-toggle-on{
+  font-size: 30px;
+  margin: 10px;
+  color: wheat !important;
 }
 
 .register form h2 {
@@ -73,7 +57,7 @@
 .register form button {
   height: 50px;
   width: 100%;
-  background-color: #04091d;
+  background-color: var(--form-bg);
   color: white;
   padding: 10px;
   border: none;
@@ -86,7 +70,7 @@
 }
 
 .register form button:hover {
-  background-color: #504bc3;
+  background-color: var(--background);
 }
 
 .register form .formLink {
@@ -250,7 +234,6 @@
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: #504bc3;
 }
 
 .login form {
@@ -285,7 +268,7 @@
 .login form button {
   height: 50px;
   width: 100%;
-  background-color: #04091d;
+  background-color: var(--form-bg);
   color: white;
   padding: 10px;
   border: none;
@@ -298,7 +281,7 @@
 }
 
 .login form button:hover {
-  background-color: #504bc3;
+  background-color: var(--background);
 }
 
 .login form .formLink {
@@ -408,11 +391,13 @@
   align-items: center;
   font-weight: 500;
   cursor: pointer;
+  color: white !important;
 }
 
 .menulink .menuLinkText {
   margin-left: 10px;
   margin-right: 5px;
+    color: white !important;
 }
 
 .menulink .menuLinkTextName {
@@ -433,4 +418,35 @@
 }
 .car-card {
   border-radius: 0px 0px 100px 0px !important;
+}
+
+:root {
+  --background: #504bc3;
+  --text-primary: #04091d;
+  --text-secondary: #ffff;
+  --accent: #ffff;
+  --border: #ffff;
+  --form-bg: #04091d;
+}
+
+[data-theme='dark'] {
+  --background: #04091d;
+  --text-primary: #504bc3;
+  --text-secondary: #ffff;
+  --accent: #ffff;
+  --border: #ffff;
+  --form-bg: #504bc3;
+}
+
+
+.purple-bg {
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: all .5s;
+}
+
+.blue-bg {
+  background-color: var(--form-bg);
+  color: var(--text-primary);
+  transition: all .5s;
 }

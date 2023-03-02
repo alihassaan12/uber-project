@@ -1,11 +1,19 @@
 import React from "react";
 import Ride from "./assets/rided.jpg";
 import Icon from "./assets/ConfirmIcon.png";
+import useLocalStorage from "use-local-storage";
 
 function Ridedone() {
+
+  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme( newTheme )
+  }
   return (
     <>
-      <div className="container-fluid purple-bg">
+      <div className="container-fluid purple-bg" data-theme={ theme }>
         <div className="container">
           <div className="row align-items-center" style={{ height: "100vh" }}>
             <div className="col-6">
@@ -22,6 +30,7 @@ function Ridedone() {
             </div>
           </div>
         </div>
+        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
       </div>
     </>
   );

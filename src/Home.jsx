@@ -3,11 +3,21 @@ import "./css/App.css";
 import Carimg from "./assets/images/home-car.png";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 
 const Display = () => {
+
+  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme( newTheme )
+  }
+
   return (
     <>
-      <div className="container-fluid purple-bg">
+      <div className="container-fluid purple-bg" data-theme={ theme }>
+        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
         <div className="row disply-row align-items-center">
           <div className="col-6 text-center px-0">
             <Link
@@ -22,6 +32,7 @@ const Display = () => {
             <img src={Carimg} className="img-fluid" alt="not-found" />
           </div>
         </div>
+
       </div>
     </>
   );

@@ -9,6 +9,7 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
+import useLocalStorage from "use-local-storage";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -27,6 +28,12 @@ const Login = () => {
   };
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
   };
 
   const handleLogin = (e) => {
@@ -62,72 +69,81 @@ const Login = () => {
   };
   console.log(inputs);
   return (
-    <div className="login">
-      <form>
-        <h2>Login</h2>
-        <div className="formInput">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="formInput">
-          <input
-            type={inputType}
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
-          <div className="eyeIcon" onClick={handleToggle}>
-            {toggleEye ? <Visibility /> : <VisibilityOff />}
-          </div>
-        </div>
-        <button type="submit" onClick={handleLogin}>
-          Login
-        </button>
+    <>
+      <div className="container-fluid purple-bg" data-theme={theme}>
+        <i onClick={ switchTheme } class="fas fa-toggle-on"></i>
+        <div className="login">
+          <form>
+            <h2>Login</h2>
+            <div className="formInput">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="formInput">
+              <input
+                type={inputType}
+                name="password"
+                id="password"
+                placeholder="Password"
+                onChange={handleChange}
+                required
+              />
+              <div className="eyeIcon" onClick={handleToggle}>
+                {toggleEye ? <Visibility /> : <VisibilityOff />}
+              </div>
+            </div>
+            <button type="submit" onClick={handleLogin}>
+              Login
+            </button>
 
-        <div className="formLink">
-          <span>Don't have an account? </span>
-          <Link
-            to="/register"
-            className="formSignup"
-            style={{ textDecoration: "none" }}
-          >
-            {" "}
-            SignUp
-          </Link>
-        </div>
+            <div className="formLink">
+              <span>Don't have an account? </span>
+              <Link
+                to="/register"
+                className="formSignup"
+                style={{ textDecoration: "none" }}
+              >
+                {" "}
+                SignUp
+              </Link>
+            </div>
 
-        <div className="line"></div>
-        <div className="media-options">
-          <Link to="#" className="facebook" style={{ textDecoration: "none" }}>
-            <FacebookRounded className="facebookIcon" />
-            <span>Login with Facebook</span>
-          </Link>
+            <div className="line"></div>
+            <div className="media-options">
+              <Link
+                to="#"
+                className="facebook"
+                style={{ textDecoration: "none" }}
+              >
+                <FacebookRounded className="facebookIcon" />
+                <span>Login with Facebook</span>
+              </Link>
+            </div>
+            <div className="media-options">
+              <Link
+                to="#"
+                className="facebook google"
+                style={{ textDecoration: "none" }}
+                onClick={signInWithGoogle}
+              >
+                <img
+                  src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+                  alt=""
+                  className="googleImg"
+                />
+                <span>Login with Google</span>
+              </Link>
+            </div>
+          </form>
         </div>
-        <div className="media-options">
-          <Link
-            to="#"
-            className="facebook google"
-            style={{ textDecoration: "none" }}
-            onClick={signInWithGoogle}
-          >
-            <img
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
-              alt=""
-              className="googleImg"
-            />
-            <span>Login with Google</span>
-          </Link>
-        </div>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,109 +1,121 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import useLocalStorage from "use-local-storage";
 import { getCartTotal, removeItem } from "./cartSlice";
 
 const CartPage = () => {
+
+  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme( newTheme )
+  }
   const { cart, totalQuantity, totalPrice } = useSelector(
-    (state) => state.allCart
+    ( state ) => state.allCart
   );
+
+
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCartTotal());
-  }, [cart]);
+  useEffect( () => {
+    dispatch( getCartTotal() );
+  }, [ cart ] );
 
   return (
     <>
-      <section
-        className="container-fluid py-5 purple-bg"
-        style={{ height: "100vh" }}
-      >
-        <div className="row justify-content-center my-4">
-          <div className="col-4">
-            <div className="card mb-4 border-0 rounded-0">
-              <div className="card-header py-3 blue-bg text-white border-0 rounded-0">
-                <h5 className="mb-0">Cart - {cart.length} items</h5>
-              </div>
-              <div className="card-body  border-0 rounded-0">
-                {cart?.map((data) => (
-                  <div className="row">
-                    <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                      <div
-                        className="bg-image hover-overlay hover-zoom ripple rounded"
-                        data-mdb-ripple-color="light"
-                      >
-                        <img
-                          src={data.img}
-                          className="w-100"
-                          alt="Blue Jeans Jacket"
-                        />
+      <div className="purple-bg" data-theme={ theme }>
+        <section
+          className="container-fluid py-5 "
+          style={ { height: "100vh" } }
+        >
+          <div className="row justify-content-center my-4">
+            <div className="col-4">
+              <div className="card mb-4 border-0 rounded-0">
+                <div className="py-3 blue-bg text-white border-0 rounded-0 px-4" data-theme={ theme }>
+                  <h5 className="mb-0">Cart - { cart.length } items</h5>
+                </div>
+                <div className="card-body  border-0 rounded-0">
+                  { cart?.map( ( data ) => (
+                    <div className="row">
+                      <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                        <div
+                          className="bg-image hover-overlay hover-zoom ripple rounded"
+                          data-mdb-ripple-color="light"
+                        >
+                          <img
+                            src={ data.img }
+                            className="w-100"
+                            alt="Blue Jeans Jacket"
+                          />
+                        </div>
                       </div>
+                      <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                        <p>
+                          <strong>{ data.title }</strong>
+                        </p>
+                        <button
+                          type="button"
+                          className="p-2 border-0 blue-bg text-white btn-sm me-1 mb-2" data-theme={ theme }
+                          data-mdb-toggle="tooltip"
+                          title="Remove item"
+                          onClick={ () => dispatch( removeItem( data.id ) ) }
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </div>
+                      <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                        <div
+                          className="d-flex mb-4"
+                          style={ { maxWidth: "300px" } }
+                        ></div>
+                        <p className="text-start text-md-center">
+                          <strong>{ data.price }</strong>
+                        </p>
+                      </div>
+                      <hr className="my-4" />
                     </div>
-                    <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                      <p>
-                        <strong>{data.title}</strong>
-                      </p>
-                      <button
-                        type="button"
-                        className="btn blue-bg text-white btn-sm me-1 mb-2"
-                        data-mdb-toggle="tooltip"
-                        title="Remove item"
-                        onClick={() => dispatch(removeItem(data.id))}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </button>
-                    </div>
-                    <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                      <div
-                        className="d-flex mb-4"
-                        style={{ maxWidth: "300px" }}
-                      ></div>
-                      <p className="text-start text-md-center">
-                        <strong>{data.price}</strong>
-                      </p>
-                    </div>
-                    <hr className="my-4" />
-                  </div>
-                ))}
+                  ) ) }
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-4 border-0 rounded-0">
-              <div className="card-header py-3 blue-bg text-white border-0 rounded-0">
-                <h5 className="mb-0">Summary</h5>
-              </div>
-              <div className="card-body">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                    Total Quantity
-                    <span>{totalQuantity}</span>
-                  </li>
+            <div className="col-md-4">
+              <div className="card mb-4 border-0 rounded-0">
+                <div className=" py-3 blue-bg text-white border-0 rounded-0 px-4" data-theme={ theme }>
+                  <h5 className="mb-0">Summary</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                      Total Quantity
+                      <span>{ totalQuantity }</span>
+                    </li>
 
-                  <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                    <div>
-                      <strong>Total amount</strong>
-                    </div>
-                    <span>
-                      <strong>{totalPrice}</strong>
-                    </span>
-                  </li>
-                </ul>
-                <Link
-                  to="/done"
-                  type="button"
-                  className="btn  blue-bg text-white rounded-0 btn-lg btn-block"
-                >
-                  Go to checkout
-                </Link>
+                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                      <div>
+                        <strong>Total amount</strong>
+                      </div>
+                      <span>
+                        <strong>{ totalPrice }</strong>
+                      </span>
+                    </li>
+                  </ul>
+                  <Link
+                    to="/done"
+                    type="button" style={{textDecoration:"none"}}
+                    className="blue-bg text-white rounded-0 btn-lg btn-block py-2 px-5" data-theme={ theme }
+                  >
+                    Go to checkout
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
+      </div>
     </>
   );
 };

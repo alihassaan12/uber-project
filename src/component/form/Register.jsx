@@ -11,6 +11,8 @@ import { FacebookRounded } from "@mui/icons-material";
 
 import FormInput from "./FormInput.jsx";
 import { AuthContext } from "../../context/AuthContext";
+import useLocalStorage from "use-local-storage";
+
 
 const Register = () => {
   const { dispatchh } = useContext(AuthContext);
@@ -65,6 +67,13 @@ const Register = () => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
+  const [ theme, setTheme ] = useLocalStorage( "theme" ? "dark" : "light" );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme( newTheme );
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -98,57 +107,62 @@ const Register = () => {
       });
   };
   return (
-    <div className="register">
-      <form>
-        <h2>Register</h2>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={inputValues[input.name]}
-            onChange={handleChange}
-          />
-        ))}
-        <button type="submit" onClick={handleRegister}>
-          Register
-        </button>
+    <>
+      <div className="container-fluid purple-bg" data-theme={ theme }>
+        <i onClick={ switchTheme } class="fas fa-toggle-on"></i>
+        <div className="register">
+          <form>
+            <h2>Register</h2>
+            { inputs.map( ( input ) => (
+              <FormInput
+                key={ input.id }
+                { ...input }
+                value={ inputValues[ input.name ] }
+                onChange={ handleChange }
+              />
+            ) ) }
+            <button type="submit" onClick={ handleRegister }>
+              Register
+            </button>
 
-        <div className="formLink">
-          <span>Already have an account? </span>
-          <Link
-            to="/login"
-            className="formSignup"
-            style={{ textDecoration: "none" }}
-          >
-            {" "}
-            SignIn
-          </Link>
-        </div>
+            <div className="formLink">
+              <span>Already have an account? </span>
+              <Link
+                to="/login"
+                className="formSignup"
+                style={ { textDecoration: "none" } }
+              >
+                { " " }
+                SignIn
+              </Link>
+            </div>
 
-        <div className="line"></div>
-        <div className="media-options">
-          <Link to="#" className="facebook" style={{ textDecoration: "none" }}>
-            <FacebookRounded className="facebookIcon" />
-            <span>Login with Facebook</span>
-          </Link>
+            <div className="line"></div>
+            <div className="media-options">
+              <Link to="#" className="facebook" style={ { textDecoration: "none" } }>
+                <FacebookRounded className="facebookIcon" />
+                <span>Login with Facebook</span>
+              </Link>
+            </div>
+            <div className="media-options">
+              <Link
+                to="#"
+                className="facebook google"
+                style={ { textDecoration: "none" } }
+                onClick={ signInWithGoogle }
+              >
+                <img
+                  src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+                  alt=""
+                  className="googleImg"
+                />
+                <span>Login with Google</span>
+              </Link>
+            </div>
+          </form>
         </div>
-        <div className="media-options">
-          <Link
-            to="#"
-            className="facebook google"
-            style={{ textDecoration: "none" }}
-            onClick={signInWithGoogle}
-          >
-            <img
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
-              alt=""
-              className="googleImg"
-            />
-            <span>Login with Google</span>
-          </Link>
-        </div>
-      </form>
     </div>
+    </>
   );
 };
 
