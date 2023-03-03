@@ -95,7 +95,7 @@ const CartPage = () => {
                     </li>
                   </ul>
                   <Link
-                    to="/done"
+                    to="/confirm"
                     type="button" style={{textDecoration:"none"}}
                     className="blue-bg text-white rounded-0 btn-lg btn-block py-2 px-5"
                   >
