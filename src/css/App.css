@@ -1,4 +1,5 @@
 @import url("../../node_modules/leaflet//dist/leaflet.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -14,10 +15,12 @@
   font-family: "OswaldBold";
   src: url(../assets//fonts/OswaldBold.ttf);
 }
+
 @font-face {
   font-family: "OswaldRegular";
   src: url(../assets/fonts/OswaldRegular.ttf);
 }
+
 .logo {
   font-family: "OswaldBold";
 }
@@ -41,6 +44,7 @@
   width: 100%;
   border-radius: 5px;
 }
+
 .fa-toggle-on {
   font-size: 30px;
   margin: 10px;
@@ -373,7 +377,7 @@
   border: 1px solid red;
 }
 
-.formInput input:invalid[focused="true"] ~ .errorMessage {
+.formInput input:invalid[focused="true"]~.errorMessage {
   display: block;
 }
 
@@ -413,14 +417,16 @@
     display: none;
   }
 }
+
 .car-img {
   aspect-ratio: 4/3;
 }
+
 .car-card {
   border-radius: 0px 0px 100px 0px !important;
 }
 
-:root {
+body {
   --background: #006abc;
   --text-primary: #002473;
   --text-secondary: #ffff;
@@ -429,7 +435,7 @@
   --form-bg: #002473;
 }
 
-[data-theme="dark"] {
+body[data-theme="dark"] {
   --background: #002473;
   --text-primary: ##006abc;
   --text-secondary: #ffff;
@@ -449,6 +455,7 @@
   color: var(--text-primary);
   transition: all 0.5s;
 }
+
 .car-slice-h {
   height: 100vh;
 }
@@ -458,12 +465,14 @@
     width: 100%;
     height: 50vh;
   }
+
   .car-slice-h {
     height: 150vh;
   }
-    .img-ride {
-      height: 52vh !important;
-      width: 82%;
-      border-radius: 100%;
-    }
+
+  .img-ride {
+    height: 52vh !important;
+    width: 82%;
+    border-radius: 100%;
+  }
 }

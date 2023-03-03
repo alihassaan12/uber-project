@@ -1,26 +1,17 @@
 import React from "react";
 import Ride from "./assets/rided.jpg";
 import Icon from "./assets/ConfirmIcon.png";
-import useLocalStorage from "use-local-storage";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 function Ridedone() {
 
-  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
-
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme( newTheme )
-  }
-
   const showToast = () => {
     toast( "HAVE A SAFE JOURENY" );
   }
-
   return (
     <>
-      <div className="container-fluid purple-bg" data-theme={ theme }>
+      <div className="container-fluid purple-bg" >
         <ToastContainer />
         <button className="bg-transparent border-0 text-white m-4" onClick={ showToast }>Click Here</button>
         <div className="container">
@@ -39,7 +30,6 @@ function Ridedone() {
             </div>
           </div>
         </div>
-        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
       </div>
     </>
   );

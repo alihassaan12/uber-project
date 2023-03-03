@@ -50,7 +50,7 @@ const Navbar = () => {
                 <Link
                   style={{ textDecoration: "none" }}
                   className="d-flex align-items-center"
-                  to="/cart-page"
+                  to="/cart"
                 >
                   <i class="fa-brands fa-shopify mx-2 fa-2x text-white"></i>
                   <div className="text-white fw-bold">{totalQuantity}</div>

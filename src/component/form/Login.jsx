@@ -9,7 +9,6 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
-import useLocalStorage from "use-local-storage";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -29,12 +28,7 @@ const Login = () => {
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
 
-  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -70,8 +64,7 @@ const Login = () => {
   console.log(inputs);
   return (
     <>
-      <div className="container-fluid purple-bg" data-theme={theme}>
-        <i onClick={ switchTheme } class="fas fa-toggle-on"></i>
+      <div className="container-fluid purple-bg">
         <div className="login">
           <form>
             <h2>Login</h2>

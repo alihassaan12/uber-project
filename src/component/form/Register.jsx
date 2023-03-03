@@ -11,7 +11,6 @@ import { FacebookRounded } from "@mui/icons-material";
 
 import FormInput from "./FormInput.jsx";
 import { AuthContext } from "../../context/AuthContext";
-import useLocalStorage from "use-local-storage";
 
 
 const Register = () => {
@@ -67,12 +66,6 @@ const Register = () => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
-  const [ theme, setTheme ] = useLocalStorage( "theme" ? "dark" : "light" );
-
-  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme( newTheme );
-  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -108,8 +101,7 @@ const Register = () => {
   };
   return (
     <>
-      <div className="container-fluid purple-bg" data-theme={ theme }>
-        <i onClick={ switchTheme } class="fas fa-toggle-on"></i>
+      <div className="container-fluid purple-bg">
         <div className="register">
           <form>
             <h2>Register</h2>

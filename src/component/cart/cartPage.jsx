@@ -1,17 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import useLocalStorage from "use-local-storage";
 import { getCartTotal, removeItem } from "./cartSlice";
 
 const CartPage = () => {
 
-  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
-
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme( newTheme )
-  }
   const { cart, totalQuantity, totalPrice } = useSelector(
     ( state ) => state.allCart
   );
@@ -26,14 +19,14 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="purple-bg" data-theme={ theme }>
+      <div className="purple-bg">
         <section
           className="container-fluid py-5 car-slice-h"
         >
           <div className="row justify-content-center my-4">
             <div className="col-sm-12 col-md-12 col-lg-4">
               <div className="card mb-4 border-0 rounded-0">
-                <div className="py-3 blue-bg text-white border-0 rounded-0 px-4" data-theme={ theme }>
+                <div className="py-3 blue-bg text-white border-0 rounded-0 px-4">
                   <h5 className="mb-0">Cart - { cart.length } items</h5>
                 </div>
                 <div className="card-body  border-0 rounded-0">
@@ -57,7 +50,7 @@ const CartPage = () => {
                         </p>
                         <button
                           type="button"
-                          className="p-2 border-0 blue-bg text-white btn-sm me-1 mb-2" data-theme={ theme }
+                          className="p-2 border-0 blue-bg text-white btn-sm me-1 mb-2"
                           data-mdb-toggle="tooltip"
                           title="Remove item"
                           onClick={ () => dispatch( removeItem( data.id ) ) }
@@ -82,7 +75,7 @@ const CartPage = () => {
             </div>
             <div className="col-md-4">
               <div className="card mb-4 border-0 rounded-0">
-                <div className=" py-3 blue-bg text-white border-0 rounded-0 px-4" data-theme={ theme }>
+                <div className=" py-3 blue-bg text-white border-0 rounded-0 px-4">
                   <h5 className="mb-0">Summary</h5>
                 </div>
                 <div className="card-body">
@@ -102,9 +95,9 @@ const CartPage = () => {
                     </li>
                   </ul>
                   <Link
-                    to="/done"
+                    to="/confirm"
                     type="button" style={{textDecoration:"none"}}
-                    className="blue-bg text-white rounded-0 btn-lg btn-block py-2 px-5" data-theme={ theme }
+                    className="blue-bg text-white rounded-0 btn-lg btn-block py-2 px-5"
                   >
                     Go to checkout
                   </Link>
@@ -113,7 +106,6 @@ const CartPage = () => {
             </div>
           </div>
         </section>
-        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
       </div>
     </>
   );

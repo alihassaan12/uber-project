@@ -5,7 +5,6 @@ import Navbar from "../navbar/Navbar.jsx";
 import "../../css/App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import useLocalStorage from "use-local-storage";
 
 export default function Product() {
   useEffect(() => {
@@ -14,19 +13,10 @@ export default function Product() {
 
   const items = useSelector((state) => state.allCart.items);
 
-  const dispatch = useDispatch();
-  const [ theme, setTheme ] = useLocalStorage( 'theme' ? 'dark' : 'light' )
-
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme( newTheme )
-  }
-
-
   return (
     <>
-      <div className="purple-bg" data-theme={ theme } >
-        <header className="blue-bg" data-theme={ theme }>
+      <div className="purple-bg" >
+        <header className="blue-bg">
           <Navbar />
         </header>
         <div className="container-fluid purple-bg py-5">
@@ -65,7 +55,6 @@ export default function Product() {
             </div>
           </div>
         </div>
-        <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
     </div>
     </>
   );
