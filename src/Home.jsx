@@ -20,6 +20,8 @@ const Display = () => {
         <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
         <div className="row disply-row align-items-center">
           <div className="col-sm-12 col-md-12 col-lg-6  text-center px-0">
+            <h1 className="text-white my-3">WELCOME TO ALEE UBER</h1>
+            <p className="text-white my-4 col-5 mx-auto">Enjoy convenient, safe, and affordable rides with us. Let's get you where you need to go."</p>
             <Link
               style={{ textDecoration: "none" }}
               to="/login"

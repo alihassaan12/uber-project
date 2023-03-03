@@ -2,6 +2,8 @@ import React from "react";
 import Ride from "./assets/rided.jpg";
 import Icon from "./assets/ConfirmIcon.png";
 import useLocalStorage from "use-local-storage";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Ridedone() {
 
@@ -11,9 +13,16 @@ function Ridedone() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme( newTheme )
   }
+
+  const showToast = () => {
+    toast( "HAVE A SAFE JOURENY" );
+  }
+
   return (
     <>
       <div className="container-fluid purple-bg" data-theme={ theme }>
+        <ToastContainer />
+        <button className="bg-transparent border-0 text-white m-4" onClick={ showToast }>Click Here</button>
         <div className="container">
           <div className="row align-items-center" style={{ height: "100vh" }}>
             <div className="col-sm-12 col-md-12 col-lg-6 text-center">
