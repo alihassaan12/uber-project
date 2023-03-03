@@ -12,10 +12,12 @@ export default function Product() {
   }, []);
 
   const items = useSelector((state) => state.allCart.items);
+  const dispatch = useDispatch();
+
 
   return (
     <>
-      <div className="purple-bg" >
+      <div className="purple-bg">
         <header className="blue-bg">
           <Navbar />
         </header>
