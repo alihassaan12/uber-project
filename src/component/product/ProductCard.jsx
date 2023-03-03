@@ -39,7 +39,7 @@ export default function Product() {
             <div className="row">
               { items.map( ( item ) => (
                 <div
-                  className="col-3"
+                  className="col-sm-12 col-md-12 col-lg-3"
                   key={ item.id }
                   size="md"
                   data-aos="fade-down"

@@ -20,7 +20,7 @@ const Home = () => {
         </header>
         <div className="container-fluid p-5">
           <div className="row justify-content-center">
-            <div className="col-8 text-center">
+            <div className="col-sm-12 col-md-12 col-lg-8 text-center">
               <h1 className="text-white">Select Your Location</h1>
               <Map />
               <div className="py-4">

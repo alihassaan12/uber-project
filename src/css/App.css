@@ -450,3 +450,30 @@
   color: var(--text-primary);
   transition: all .5s;
 }
+                .car-slice-h {
+                  height: 100vh;
+                }
+
+
+@media only screen and (min-width: 1024px) {}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media only screen and (min-width: 960px) and (max-width: 1023px) {}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+@media only screen and (min-width: 540px) and (max-width: 720px) {}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .leaflet-container {
+      width: 100%;
+      height: 50vh;
+    }
+                .car-slice-h {
+                  height: 150vh;
+                }
+}
+

@@ -19,7 +19,7 @@ const Display = () => {
       <div className="container-fluid purple-bg" data-theme={ theme }>
         <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
         <div className="row disply-row align-items-center">
-          <div className="col-6 text-center px-0">
+          <div className="col-sm-12 col-md-12 col-lg-6  text-center px-0">
             <Link
               style={{ textDecoration: "none" }}
               to="/login"
@@ -28,7 +28,7 @@ const Display = () => {
               GET STARTED
             </Link>
           </div>
-          <div className="col-6 px-0">
+          <div className="col-sm-12 col-md-12 col-lg-6  px-0">
             <img src={Carimg} className="img-fluid" alt="not-found" />
           </div>
         </div>

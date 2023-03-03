@@ -28,11 +28,10 @@ const CartPage = () => {
     <>
       <div className="purple-bg" data-theme={ theme }>
         <section
-          className="container-fluid py-5 "
-          style={ { height: "100vh" } }
+          className="container-fluid py-5 car-slice-h"
         >
           <div className="row justify-content-center my-4">
-            <div className="col-4">
+            <div className="col-sm-12 col-md-12 col-lg-4">
               <div className="card mb-4 border-0 rounded-0">
                 <div className="py-3 blue-bg text-white border-0 rounded-0 px-4" data-theme={ theme }>
                   <h5 className="mb-0">Cart - { cart.length } items</h5>
