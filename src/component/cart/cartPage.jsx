@@ -9,8 +9,6 @@ const CartPage = () => {
     ( state ) => state.allCart
   );
 
-
-
   const dispatch = useDispatch();
 
   useEffect( () => {
