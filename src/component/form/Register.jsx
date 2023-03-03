@@ -141,7 +141,7 @@ const Register = () => {
             <div className="media-options">
               <Link to="#" className="facebook" style={ { textDecoration: "none" } }>
                 <FacebookRounded className="facebookIcon" />
-                <span>Login with Facebook</span>
+                <span>SignIn with Facebook</span>
               </Link>
             </div>
             <div className="media-options">
@@ -156,7 +156,7 @@ const Register = () => {
                   alt=""
                   className="googleImg"
                 />
-                <span>Login with Google</span>
+                <span>SignIn with Google</span>
               </Link>
             </div>
           </form>
