@@ -41,7 +41,7 @@
   width: 100%;
   border-radius: 5px;
 }
-.fa-toggle-on{
+.fa-toggle-on {
   font-size: 30px;
   margin: 10px;
   color: wheat !important;
@@ -397,7 +397,7 @@
 .menulink .menuLinkText {
   margin-left: 10px;
   margin-right: 5px;
-    color: white !important;
+  color: white !important;
 }
 
 .menulink .menuLinkTextName {
@@ -421,7 +421,7 @@
 }
 
 :root {
-  --background: #006ABC;
+  --background: #006abc;
   --text-primary: #002473;
   --text-secondary: #ffff;
   --accent: #ffff;
@@ -429,52 +429,41 @@
   --form-bg: #002473;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --background: #002473;
-  --text-primary: ##006ABC;
+  --text-primary: ##006abc;
   --text-secondary: #ffff;
   --accent: #ffff;
   --border: #ffff;
-  --form-bg: #006ABC;
+  --form-bg: #006abc;
 }
-
 
 .purple-bg {
   background-color: var(--background);
   color: var(--text-primary);
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .blue-bg {
   background-color: var(--form-bg);
   color: var(--text-primary);
-  transition: all .5s;
+  transition: all 0.5s;
 }
-                .car-slice-h {
-                  height: 100vh;
-                }
-
-
-@media only screen and (min-width: 1024px) {}
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {}
-
-@media only screen and (min-width: 960px) and (max-width: 1023px) {}
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {}
-
-@media only screen and (min-width: 540px) and (max-width: 720px) {}
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
+.car-slice-h {
+  height: 100vh;
+}
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
   .leaflet-container {
-      width: 100%;
-      height: 50vh;
+    width: 100%;
+    height: 50vh;
+  }
+  .car-slice-h {
+    height: 150vh;
+  }
+    .img-ride {
+      height: 52vh !important;
+      width: 82%;
+      border-radius: 100%;
     }
-                .car-slice-h {
-                  height: 150vh;
-                }
-
 }
-

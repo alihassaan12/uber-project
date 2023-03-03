@@ -16,10 +16,10 @@ function Ridedone() {
       <div className="container-fluid purple-bg" data-theme={ theme }>
         <div className="container">
           <div className="row align-items-center" style={{ height: "100vh" }}>
-            <div className="col-6">
+            <div className="col-sm-12 col-md-12 col-lg-6 text-center">
               <img src={Ride} className="img-ride" alt="not-found" />
             </div>
-            <div className="col-6 text-center">
+            <div className="col-sm-12 col-md-12 col-lg-6 text-center">
               <h1 className="text-white">
                 {" "}
                 <span>
