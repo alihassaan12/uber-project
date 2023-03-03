@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light py-5 border-0">
+        <nav class="navbar navbar-expand-lg navbar-light py-5 border-0" style={ { flexWrap:"nowrap"}}>
           <div class="container">
             <a class="navbar-brand logo text-white" href="#">
               UBER
