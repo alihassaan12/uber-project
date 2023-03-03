@@ -12,7 +12,7 @@ import Welcom from "./Welcom";
 import Map from "./component/map/Map.jsx";
 import Product from "./component/product/ProductCard";
 import CartPage from "./component/cart/cartPage";
-import Ridedone from "./Confirm";
+import Ridedone from "./Confirm.jsx";
 import RootLayout from "./layouts/RootLayout";
 
 function App () {
