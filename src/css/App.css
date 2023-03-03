@@ -421,21 +421,21 @@
 }
 
 :root {
-  --background: #504bc3;
-  --text-primary: #04091d;
+  --background: #006ABC;
+  --text-primary: #002473;
   --text-secondary: #ffff;
   --accent: #ffff;
   --border: #ffff;
-  --form-bg: #04091d;
+  --form-bg: #002473;
 }
 
 [data-theme='dark'] {
-  --background: #04091d;
-  --text-primary: #504bc3;
+  --background: #002473;
+  --text-primary: ##006ABC;
   --text-secondary: #ffff;
   --accent: #ffff;
   --border: #ffff;
-  --form-bg: #504bc3;
+  --form-bg: #006ABC;
 }
 
 

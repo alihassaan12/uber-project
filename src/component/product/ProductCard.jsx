@@ -6,6 +6,9 @@ import "../../css/App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useLocalStorage from "use-local-storage";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 
 export default function Product() {
   useEffect(() => {
@@ -20,6 +23,10 @@ export default function Product() {
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme( newTheme )
+  }
+
+  const showToast = () => {
+    toast( "Toast Example" );
   }
   return (
     <>
@@ -63,6 +70,8 @@ export default function Product() {
           </div>
         </div>
         <i onClick={ switchTheme } class='fas fa-toggle-on'></i>
+        <ToastContainer />
+        <Link onClick={ showToast }>show toast </Link>
     </div>
     </>
   );
